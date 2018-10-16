@@ -55,11 +55,27 @@ $(function () {
 
     describe('New Feed Selection', function () {
 
-    /* TODO: Write a test that ensures when a new feed is loaded
-     * by the loadFeed function that the content actually changes.
-     * Remember, loadFeed() is asynchronous.
-     */
+        var initialFeedContent;
+        var newFeedContent;
 
+        beforeAll(function (done) {
+            loadFeed(0, function () {
+                initialFeedContent = $('.feed').text();
+                done();
+            });
+        });
+
+        beforeEach(function (done) {
+            loadFeed(1, function () {
+                initialFeedContent = $('.feed').text();
+                done();
+            });
+        });
+
+        it('should change content', function (done) {
+            expect(initialFeedContent).not.toEqual(newFeedContent);
+            done();
+        });
     });
 
 }());
