@@ -58,17 +58,13 @@ $(function () {
         var initialFeedContent;
         var newFeedContent;
 
-        beforeAll(function (done) {
-            loadFeed(0, function () {
-                initialFeedContent = $('.feed').text();
-                done();
-            });
-        });
-
         beforeEach(function (done) {
             loadFeed(1, function () {
                 initialFeedContent = $('.feed').text();
-                done();
+                loadFeed(0, function () {
+                    newFeedContent = $('.feed').text();
+                    done();
+                });
             });
         });
 
