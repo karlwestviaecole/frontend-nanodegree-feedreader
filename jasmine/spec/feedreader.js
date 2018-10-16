@@ -20,11 +20,13 @@ $(function () {
             }
         });
 
-
-        /* TODO: Write a test that loops through each feed
-         * in the allFeeds object and ensures it has a name defined
-         * and that the name is not empty.
-         */
+        it('should have name', function () {
+            for (let feedItem of allFeeds) {
+                expect(feedItem.name).toBeDefined();
+                expect(typeof feedItem.name).toBe('string');
+                expect(feedItem.name.length).toBeGreaterThan(0);
+            }
+        });
     });
 
 
